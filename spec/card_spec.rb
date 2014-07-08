@@ -19,6 +19,10 @@ describe "Card" do
       another_card= Card.new("AS")
       expect(another_card <=> a_card).to eq(0)
     end
-  
+    
+    it "knows that is not comparable" do
+      a_card=Card.new("AS")
+      expect(a_card <=> "AS").to be_nil
+    end
   end
 end
