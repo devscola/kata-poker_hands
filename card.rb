@@ -9,6 +9,7 @@ class Card
   
   def <=> another_card
      return 1 if value(@description) > value(another_card.description)
+     return -1 if value(@description) < value(another_card.description)
   end
 
 private
