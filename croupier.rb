@@ -10,7 +10,6 @@ class Croupier
 
     winner= compose("Player one",highest_one)
     winner= compose("Player two",highest_two) if (value(highest_two)> value(highest_one))
-
     winner
   end
 
