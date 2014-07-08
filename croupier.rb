@@ -1,9 +1,17 @@
 class Croupier
-  RANK="Highest card"
-  SEPARATOR=" : "
-  FACE_VALUES=["2","3","4","5","6","7","8","9","T","J","Q","K","A"]
+  RANK = "Highest card"
+  SEPARATOR = " : "
+  FACE_VALUES = ["2","3","4","5","6","7","8","9","T","J","Q","K","A"]
+  WINS = " wins with "
 
   def self.check hand_one, hand_two
+    highest_one = highest_card hand_one
+    highest_two = highest_card hand_two
+
+    winner= "Player one"+ WINS + RANK + SEPARATOR + highest_one
+    winner= "Player two"+ WINS + RANK + SEPARATOR + highest_two if (value(highest_two)> value(highest_one))
+
+    winner
   end
 
   def self.check_hand a_hand
