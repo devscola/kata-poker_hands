@@ -4,22 +4,19 @@ class Card
   HIGHER = 1
   LOWER = -1
   EQUAL = 0 
-  attr_reader :description
 
   def initialize(description)
     @description = description
   end
   
   def <=> another_card
-    result = HIGHER if value(@description) > value(another_card.description)
-    result = LOWER if value(@description) < value(another_card.description)
-    result = EQUAL if value(@description) == value(another_card.description)
+    result = HIGHER if value > another_card.value
+    result = LOWER if value < another_card.value
+    result = EQUAL if value == another_card.value
     result  
   end
 
-private
-
-  def value card
-    FACE_VALUES.index(card.chars.first)
+  def value 
+    FACE_VALUES.index(@description.chars.first)
   end 
 end
