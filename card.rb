@@ -10,6 +10,7 @@ class Card
   end
   
   def <=> another_card
+    return if another_card.class != Card
     result = HIGHER if value > another_card.value
     result = LOWER if value < another_card.value
     result = EQUAL if value == another_card.value
