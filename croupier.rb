@@ -3,6 +3,9 @@ class Croupier
   SEPARATOR=" : "
   FACE_VALUES=["2","3","4","5","6","7","8","9","T","J","Q","K","A"]
 
+  def self.check hand_one, hand_two
+  end
+
   def self.check_hand a_hand
     highest_card = highest_card (a_hand)
     RANK+ SEPARATOR + highest_card
