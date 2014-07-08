@@ -5,11 +5,17 @@ class Croupier
   WINS = " wins with "
 
   def self.check hand_one, hand_two
-    highest_one = highest_card hand_one
-    highest_two = highest_card hand_two
+    winner= ""
 
-    winner= compose("Player one",highest_one)
-    winner= compose("Player two",highest_two) if (value(highest_two)> value(highest_one))
+    (1..5).each do |position|
+      break if winner!=""
+      highest_one = highest_card_in_position(position,hand_one)
+      highest_two = highest_card_in_position(position,hand_two)
+      next if (value(highest_two) == value(highest_one)) 
+      winner= compose("Player one",highest_one)
+      winner= compose("Player two",highest_two) if (value(highest_two)> value(highest_one))
+    end
+
     winner
   end
 
@@ -28,6 +34,14 @@ class Croupier
       comparison = value(a_card) - value(another_card) 
     end
     ordered.last
+  end
+
+  def self.highest_card_in_position(position,a_hand)
+    cards = a_hand.split(' ')
+    ordered = cards.sort do |a_card, another_card|
+      comparison = value(another_card) - value(a_card) 
+    end
+    ordered[position-1]
   end
 
   def self.value card
