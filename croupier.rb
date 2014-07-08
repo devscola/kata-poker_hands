@@ -3,6 +3,8 @@ class Croupier
   SEPARATOR = " : "
   FACE_VALUES = ["2","3","4","5","6","7","8","9","T","J","Q","K","A"]
   WINS = " wins with "
+  FIRST = 1
+  BASE_CORRECTION = -1
 
   def self.check hand_one, hand_two
     winner= ""
@@ -29,11 +31,7 @@ class Croupier
   end
 
   def self.highest_card(a_hand)
-    cards = a_hand.split(' ')
-    ordered = cards.sort do |a_card, another_card|
-      comparison = value(a_card) - value(another_card) 
-    end
-    ordered.last
+    highest_card_in_position(FIRST ,a_hand)
   end
 
   def self.highest_card_in_position(position,a_hand)
@@ -41,7 +39,7 @@ class Croupier
     ordered = cards.sort do |a_card, another_card|
       comparison = value(another_card) - value(a_card) 
     end
-    ordered[position-1]
+    ordered[position + BASE_CORRECTION]
   end
 
   def self.value card
