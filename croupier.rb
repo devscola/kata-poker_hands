@@ -8,10 +8,14 @@ class Croupier
     highest_one = highest_card hand_one
     highest_two = highest_card hand_two
 
-    winner= "Player one"+ WINS + RANK + SEPARATOR + highest_one
-    winner= "Player two"+ WINS + RANK + SEPARATOR + highest_two if (value(highest_two)> value(highest_one))
+    winner= compose("Player one",highest_one)
+    winner= compose("Player two",highest_two) if (value(highest_two)> value(highest_one))
 
     winner
+  end
+
+  def self.compose player,card
+    player + WINS + RANK + SEPARATOR + card
   end
 
   def self.check_hand a_hand
