@@ -14,10 +14,10 @@ describe "A croupier in the casino " do
     it "identifies the winner with highest card " do
       expected = "Player one wins with Highest card : KD"
       reverse_expected = "Player two wins with Highest card : KD"
-      player_one = "2H 3D 5S 9C KD"
-      player_two = "2H 3D 4H 9C 6D"
-      expect(Croupier.check(player_one,player_two)).to eq(expected)
-      expect(Croupier.check(player_two,player_one)).to eq(expected)
+      a_hand = "2H 3D 5S 9C KD"
+      another_hand = "2H 3D 4H 9C 6D"
+      expect(Croupier.check(a_hand,another_hand)).to eq(expected)
+      expect(Croupier.check(another_hand,a_hand)).to eq(reverse_expected)
     end
   end
 
