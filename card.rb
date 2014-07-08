@@ -14,6 +14,6 @@ class Card
 private
 
   def value card
-    FACE_VALUES.index(card[0,1])
+    FACE_VALUES.index(card.chars.first)
   end 
 end
