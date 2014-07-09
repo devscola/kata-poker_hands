@@ -8,4 +8,8 @@ class Hand
   def highest_card
     @cards.last
   end
+
+  def <=> to_compare
+    
+  end
 end
