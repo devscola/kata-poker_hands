@@ -10,6 +10,6 @@ class Hand
   end
 
   def <=> to_compare
-    
+    highest_card <=> to_compare.highest_card
   end
 end
