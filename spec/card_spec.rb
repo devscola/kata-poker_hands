@@ -25,4 +25,8 @@ describe "Card" do
       expect(a_card <=> "AS").to be_nil
     end
   end
+  
+  it "knows how to express in a string" do
+    expect(Card.new("AS").to_s).to eq("AS")
+  end
 end

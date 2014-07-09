@@ -20,4 +20,9 @@ class Card
   def value 
     FACE_VALUES.index(@description.chars.first)
   end 
+
+  def to_s
+    @description
+  end
+
 end

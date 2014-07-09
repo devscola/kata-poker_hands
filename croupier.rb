@@ -13,21 +13,21 @@ class Croupier
       break if winner!=""
       highest_one = highest_card_in_position(position,hand_one)
       highest_two = highest_card_in_position(position,hand_two)
-      next if (value(highest_two) == value(highest_one)) 
+      next if (highest_two.value == highest_one.value) 
       winner= compose("Player one",highest_one)
-      winner= compose("Player two",highest_two) if (value(highest_two)> value(highest_one))
+      winner= compose("Player two",highest_two) if (highest_two.value> highest_one.value)
     end
 
     winner
   end
 
   def self.compose player,card
-    player + WINS + RANK + SEPARATOR + card
+    player + WINS + RANK + SEPARATOR + card.to_s
   end
 
   def self.check_hand a_hand
     highest_card = highest_card (a_hand)
-    RANK+ SEPARATOR + highest_card
+    RANK+ SEPARATOR + highest_card.to_s
   end
 
   def self.highest_card(a_hand)
@@ -35,11 +35,10 @@ class Croupier
   end
 
   def self.highest_card_in_position(position,a_hand)
-    cards = a_hand.split(' ')
-    ordered = cards.sort do |a_card, another_card|
-      comparison = value(another_card) - value(a_card) 
-    end
-    ordered[position + BASE_CORRECTION]
+    cards_descriptions = a_hand.split(' ')
+    cards = cards_descriptions.map { |description| Card.new(description) }
+    ordered = cards.sort
+    ordered[ordered.length-position]
   end
 
   def self.value card
