@@ -20,4 +20,14 @@ describe "A poker Hand" do
     expect(a_hand <=> a_hand).to eq(0)
   end
 
+  it "knows the winner card after comparison" do
+    a_hand = Hand.new("3H 4D 5S 9C KD")
+    another_hand = Hand.new("2H 3D 5S 9C KD")
+    expect(a_hand.winner_of_last_comparison).to eq("")
+    a_hand <=> another_hand
+    expect(a_hand.winner_of_last_comparison).to eq("4D")
+    another_hand<=>a_hand
+    expect(a_hand.winner_of_last_comparison).to eq("4D")
+  end
+
 end
